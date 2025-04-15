@@ -1,18 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Password generator app</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
 
-  <link rel="stylesheet" href="styles.css">
+    <title>Frontend Mentor | Password generator app</title>
 
-  <script src="script.js" defer></script>
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
 
-</body>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <h1>Password Generator</h1>
+      <div class="password-container">
+        <input
+          type="text"
+          class="password"
+          id="password"
+          placeholder="P4$5W0rD!"
+          readonly
+        />
+        <div class="copy-container">
+          <span class="copy-span" id="copy-span">COPIED</span>
+          <button class="copy-btn" id="copy-btn">
+            <img
+              src="./assets/images/icon-copy.svg"
+              alt="Copy to clipboard icon in light green color"
+            />
+          </button>
+        </div>
+      </div>
+      <form>
+        <fieldset class="range-container">
+          <legend class="visually-hidden">Password Length</legend>
+          <div class="length-container">
+            <label for="char-input">Character Length</label>
+            <span class="char-length" id="char-length">0</span>
+          </div>
+          <input
+            type="range"
+            name="char-input"
+            id="char-input"
+            min="0"
+            max="20"
+            value="0"
+          />
+        </fieldset>
+      </form>
+    </main>
+  </body>
 </html>
