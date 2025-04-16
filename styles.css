@@ -335,3 +335,46 @@ input[type="range"]:active::-moz-range-thumb {
   background-color: var(--grey-850);
   border: 2px solid var(--green-200);
 }
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--spacing-200);
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-300);
+}
+
+.password-option {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid var(--grey-200);
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.password-option:checked {
+  background-color: var(--green-200);
+  border: 2px solid var(--green-200);
+  background-image: url("./assets/images/icon-check.svg");
+}
+
+.password-option:not(:checked):hover {
+  border-color: var(--green-200);
+}
+
+.option-label {
+  color: var(--grey-200);
+  font: var(--text-preset-4);
+  cursor: pointer;
+}
