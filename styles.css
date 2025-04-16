@@ -156,6 +156,7 @@ body {
   justify-content: center;
   align-items: center;
   background: var(--gradient-1);
+  padding: var(--spacing-400);
 }
 
 main {
@@ -177,7 +178,6 @@ h1 {
   justify-content: space-between;
   align-items: center;
   padding: var(--spacing-200);
-  gap: var(--spacing-1000);
   margin-bottom: var(--spacing-200);
   background-color: var(--grey-800);
 }
@@ -285,7 +285,7 @@ input[type="range"] {
 }
 
 input[type="range"]::-webkit-slider-thumb {
-  margin-top: -1.25rem;
+  margin-bottom: 1.25rem;
   -webkit-appearance: none;
   width: 1.75rem;
   height: 1.75rem;
