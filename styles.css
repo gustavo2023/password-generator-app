@@ -405,3 +405,29 @@ input[type="range"]:active::-moz-range-thumb {
   color: var(--grey-200);
   font: var(--text-preset-3);
 }
+
+.strength-bar {
+  width: 0.625rem;
+  height: 1.75rem;
+  border: 2px solid var(--grey-200);
+}
+
+.too-weak {
+  background-color: var(--red-500);
+  border-color: var(--red-500);
+}
+
+.weak {
+  background-color: var(--orange-400);
+  border-color: var(--orange-400);
+}
+
+.medium {
+  background-color: var(--yellow-300);
+  border-color: var(--yellow-300);
+}
+
+.strong {
+  background-color: var(--green-200);
+  border-color: var(--green-200);
+}
