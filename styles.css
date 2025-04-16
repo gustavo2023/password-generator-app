@@ -281,7 +281,7 @@ input[type="range"] {
   background-color: transparent;
   cursor: pointer;
   position: relative;
-  z-index: 1; 
+  z-index: 1;
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -314,4 +314,24 @@ input[type="range"]::-moz-range-thumb {
   width: 0%;
   z-index: 0;
   pointer-events: none;
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+  background-color: var(--grey-850);
+  border: 2px solid var(--green-200);
+}
+
+input[type="range"]:hover::-moz-range-thumb {
+  background-color: var(--grey-850);
+  border: 2px solid var(--green-200);
+}
+
+input[type="range"]:active::-webkit-slider-thumb {
+  background-color: var(--grey-850);
+  border: 2px solid var(--green-200);
+}
+
+input[type="range"]:active::-moz-range-thumb {
+  background-color: var(--grey-850);
+  border: 2px solid var(--green-200);
 }
