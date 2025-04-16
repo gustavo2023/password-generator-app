@@ -149,3 +149,24 @@ textarea:not([rows]) {
   --spacing-2200: 11rem;
   --spacing-2300: 11.5rem;
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--gradient-1);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font: var(--text-preset-4);
+  color: var(--grey-600);
+  margin-bottom: var(--spacing-200);
+}
