@@ -213,4 +213,9 @@ h1 {
 .copy-btn {
   border: none;
   background-color: transparent;
+  cursor: pointer;
+}
+
+.copy-btn:hover path {
+  fill: white;
 }
