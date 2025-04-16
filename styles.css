@@ -436,3 +436,27 @@ input[type="range"]:active::-moz-range-thumb {
   background-color: var(--green-200);
   border-color: var(--green-200);
 }
+
+.generate-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-200);
+  padding: var(--spacing-200) var(--spacing-1300);
+  background-color: var(--green-200);
+  color: var(--grey-800);
+  font: var(--text-preset-4);
+  border: none;
+  cursor: pointer;
+}
+
+.generate-btn:hover {
+  border: 2px solid var(--green-200);
+  background-color: transparent;
+  color: var(--green-200);
+}
+
+.generate-btn:hover path {
+  fill: var(--green-200);
+}
