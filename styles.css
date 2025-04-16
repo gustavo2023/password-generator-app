@@ -378,3 +378,30 @@ input[type="range"]:active::-moz-range-thumb {
   font: var(--text-preset-4);
   cursor: pointer;
 }
+
+.strength-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-200);
+  padding: var(--spacing-200);
+  background-color: var(--grey-850);
+}
+
+.strength-container p {
+  color: var(--grey-600);
+  font: var(--text-preset-4);
+}
+
+.password-strength {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-200);
+}
+
+.strength {
+  color: var(--grey-200);
+  font: var(--text-preset-3);
+}
