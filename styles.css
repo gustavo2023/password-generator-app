@@ -170,3 +170,47 @@ h1 {
   color: var(--grey-600);
   margin-bottom: var(--spacing-200);
 }
+
+.password-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-200);
+  gap: var(--spacing-2000);
+  margin-bottom: var(--spacing-200);
+  background-color: var(--grey-850);
+}
+
+.password {
+  background-color: transparent;
+  color: var(--grey-200);
+  padding: var(--spacing-100) 0 0 0;
+  border: none;
+}
+
+.password::placeholder {
+  font: var(--text-preset-2);
+}
+
+.password:focus {
+  outline: none;
+  color: var(--grey-200);
+}
+
+.copy-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-100);
+}
+
+.copy-span {
+  display: none;
+  color: var(--green-200);
+  font: var(--text-preset-4);
+}
+
+.copy-btn {
+  border: none;
+  background-color: transparent;
+}
