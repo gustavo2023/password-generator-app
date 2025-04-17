@@ -1,3 +1,4 @@
+const form = document.getElementById("password-form");
 const slider = document.getElementById("char-input");
 const sliderColorDisplay = document.querySelector(".range-color-display");
 const charLengthSpan = document.getElementById("char-length");
@@ -18,6 +19,10 @@ const updateSliderFill = () => {
     charLengthSpan.textContent = value;
   }
 };
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
 
 slider.addEventListener("input", updateSliderFill);
 
