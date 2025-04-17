@@ -124,6 +124,36 @@ const calculatePasswordStrength = (password) => {
   return 1;
 };
 
+const updateStrengthIndicators = (strengthLevel) => {
+  const strengthLevelsInfo = {
+    0: { text: "", className: "" }, // Base case for reset/no strength
+    1: { text: "TOO WEAK", className: "too-weak" },
+    2: { text: "WEAK", className: "weak" },
+    3: { text: "MEDIUM", className: "medium" },
+    4: { text: "STRONG", className: "strong" },
+  };
+
+  const currentStrength =
+    strengthLevelsInfo[strengthLevel] || strengthLevelsInfo[0];
+  const { text, className } = currentStrength;
+
+  strengthIndicatorSpan.textContent = text;
+
+  // Get all possible non-empty class names for removal
+  const allClassesToRemove = Object.values(strengthLevelsInfo)
+    .map((info) => info.className)
+    .filter(Boolean); // Filter out empty string
+
+  // Iterate through each strength bar
+  strengthBars.forEach((bar, index) => {
+    bar.classList.remove(...allClassesToRemove);
+
+    if (index < strengthLevel && className) {
+      bar.classList.add(className);
+    }
+  });
+};
+
 // Character sets
 const LOWERCASE_CHARS = generateCharArrays(97, 122); // a-z
 const UPPERCASE_CHARS = generateCharArrays(65, 90); // A-Z
@@ -137,7 +167,10 @@ const SYMBOL_CHARS = generateCharArrays(33, 47).concat(
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  passwordInput.value = generatePassword();
+  const password = generatePassword();
+  passwordInput.value = password;
+  const passwordStrength = calculatePasswordStrength(password);
+  updateStrengthIndicators(passwordStrength);
 });
 
 copyBtn.addEventListener("click", copyPasswordToClipboard);
