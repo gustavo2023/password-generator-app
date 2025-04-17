@@ -44,6 +44,16 @@ const generateCharArrays = (begin, end) => {
   return charArray;
 };
 
+// Character sets
+const LOWERCASE_CHARS = generateCharArrays(97, 122); // a-z
+const UPPERCASE_CHARS = generateCharArrays(65, 90); // A-Z
+const NUMBER_CHARS = generateCharArrays(48, 57); // 0-9
+const SYMBOL_CHARS = generateCharArrays(33, 47).concat(
+  generateCharArrays(58, 64),
+  generateCharArrays(91, 96),
+  generateCharArrays(123, 126)
+);
+
 const shuffleArray = (arr) => {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -60,19 +70,27 @@ const generatePassword = () => {
 
   // Check selected options and build initial password parts + full pool
   if (upperCaseCheckbox.checked) {
-    guaranteedChars.push(UPPERCASE_CHARS[Math.floor(Math.random() * UPPERCASE_CHARS.length)]);
+    guaranteedChars.push(
+      UPPERCASE_CHARS[Math.floor(Math.random() * UPPERCASE_CHARS.length)]
+    );
     charPool = charPool.concat(UPPERCASE_CHARS);
   }
   if (lowerCaseCheckbox.checked) {
-    guaranteedChars.push(LOWERCASE_CHARS[Math.floor(Math.random() * LOWERCASE_CHARS.length)]);
+    guaranteedChars.push(
+      LOWERCASE_CHARS[Math.floor(Math.random() * LOWERCASE_CHARS.length)]
+    );
     charPool = charPool.concat(LOWERCASE_CHARS);
   }
   if (numbersCheckbox.checked) {
-    guaranteedChars.push(NUMBER_CHARS[Math.floor(Math.random() * NUMBER_CHARS.length)]);
+    guaranteedChars.push(
+      NUMBER_CHARS[Math.floor(Math.random() * NUMBER_CHARS.length)]
+    );
     charPool = charPool.concat(NUMBER_CHARS);
   }
   if (symbolsCheckbox.checked) {
-    guaranteedChars.push(SYMBOL_CHARS[Math.floor(Math.random() * SYMBOL_CHARS.length)]);
+    guaranteedChars.push(
+      SYMBOL_CHARS[Math.floor(Math.random() * SYMBOL_CHARS.length)]
+    );
     charPool = charPool.concat(SYMBOL_CHARS);
   }
 
@@ -172,21 +190,15 @@ const updateStrengthIndicators = (strengthLevel) => {
   });
 };
 
-// Character sets
-const LOWERCASE_CHARS = generateCharArrays(97, 122); // a-z
-const UPPERCASE_CHARS = generateCharArrays(65, 90); // A-Z
-const NUMBER_CHARS = generateCharArrays(48, 57); // 0-9
-const SYMBOL_CHARS = generateCharArrays(33, 47).concat(
-  generateCharArrays(58, 64),
-  generateCharArrays(91, 96),
-  generateCharArrays(123, 126)
-);
-
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   // Check if at least one checkbox is selected
-  const anyCheckboxChecked = upperCaseCheckbox.checked || lowerCaseCheckbox.checked || numbersCheckbox.checked || symbolsCheckbox.checked;
+  const anyCheckboxChecked =
+    upperCaseCheckbox.checked ||
+    lowerCaseCheckbox.checked ||
+    numbersCheckbox.checked ||
+    symbolsCheckbox.checked;
 
   if (!anyCheckboxChecked) {
     alert("Please select at least one character type option.");
