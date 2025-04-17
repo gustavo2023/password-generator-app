@@ -10,6 +10,7 @@ const upperCaseCheckbox = document.getElementById("uppercase-option");
 const lowerCaseCheckbox = document.getElementById("lowercase-option");
 const numbersCheckbox = document.getElementById("numbers-option");
 const symbolsCheckbox = document.getElementById("symbols-option");
+const strengthIndicatorSpan = document.querySelector(".strength-span");
 
 const updateSliderFill = () => {
   const min = slider.min ? parseFloat(slider.min) : 0;

@@ -402,7 +402,7 @@ input[type="range"]:active::-moz-range-thumb {
   gap: var(--spacing-200);
 }
 
-.strength {
+.strength-span {
   color: var(--grey-200);
   font: var(--text-preset-3);
 }
