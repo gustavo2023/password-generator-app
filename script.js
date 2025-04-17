@@ -11,6 +11,7 @@ const lowerCaseCheckbox = document.getElementById("lowercase-option");
 const numbersCheckbox = document.getElementById("numbers-option");
 const symbolsCheckbox = document.getElementById("symbols-option");
 const strengthIndicatorSpan = document.querySelector(".strength-span");
+const strengthBars = document.querySelectorAll(".strength-bar");
 
 const updateSliderFill = () => {
   const min = slider.min ? parseFloat(slider.min) : 0;
@@ -64,13 +65,13 @@ const shuffleArray = (arr) => {
 };
 
 const generatePassword = () => {
-  const charArray = shuffleArray(createCharPool());
+  const charsArray = shuffleArray(createCharPool());
   const passwordLength = parseInt(slider.value, 10);
   const passwordArray = [];
 
   for (let i = 0; i < passwordLength; i++) {
-    const randomIndex = Math.floor(Math.random() * charArray.length);
-    passwordArray.push(charArray[randomIndex]);
+    const randomIndex = Math.floor(Math.random() * charsArray.length);
+    passwordArray.push(charsArray[randomIndex]);
   }
 
   return passwordArray.join("");
@@ -88,6 +89,39 @@ const copyPasswordToClipboard = async () => {
   } else {
     alert("Please generate a password first.");
   }
+};
+
+const calculatePasswordStrength = (password) => {
+  let score = 0;
+  const length = password.length;
+
+  if (length >= 16) score += 4;
+  else if (length >= 12) score += 3;
+  else if (length >= 8) score += 2;
+  else if (length >= 4) score += 1;
+
+  let typesCount = 0;
+  const typesRegexArray = [
+    /[a-z]/, // lowercase
+    /[A-Z]/, // uppercase
+    /[0-9]/, // numbers
+    /[!@#$%^&*(),.?":{}|<>]/, // symbols
+  ];
+
+  typesRegexArray.forEach((regex) => {
+    if (regex.test(password)) typesCount++;
+  });
+
+  if (typesCount >= 3 && length >= 8) {
+    score += typesCount;
+  } else if (typesCount >= 2 && length >= 12) {
+    score += typesCount;
+  }
+
+  if (score >= 8) return 4;
+  if (score >= 6) return 3;
+  if (score >= 4) return 2;
+  return 1;
 };
 
 // Character sets
