@@ -28,6 +28,10 @@ const updateSliderFill = () => {
   }
 };
 
+slider.addEventListener("input", updateSliderFill);
+
+updateSliderFill();
+
 const generateCharArrays = (begin, end) => {
   const charArray = [];
 
@@ -38,9 +42,16 @@ const generateCharArrays = (begin, end) => {
   return charArray;
 };
 
-slider.addEventListener("input", updateSliderFill);
+const createCharPool = () => {
+  let charPool = [];
 
-updateSliderFill();
+  if (upperCaseCheckbox.checked) charPool = charPool.concat(UPPERCASE_CHARS);
+  if (lowerCaseCheckbox.checked) charPool = charPool.concat(LOWERCASE_CHARS);
+  if (numbersCheckbox.checked) charPool = charPool.concat(NUMBER_CHARS);
+  if (symbolsCheckbox.checked) charPool = charPool.concat(SYMBOL_CHARS);
+
+  return charPool;
+};
 
 // Character sets
 const LOWERCASE_CHARS = generateCharArrays(97, 122); // a-z
