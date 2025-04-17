@@ -53,6 +53,28 @@ const createCharPool = () => {
   return charPool;
 };
 
+const shuffleArray = (arr) => {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+
+  return arr;
+};
+
+const generatePassword = () => {
+  const charArray = shuffleArray(createCharPool());
+  const passwordLength = parseInt(slider.value, 10);
+  const passwordArray = [];
+
+  for (let i = 0; i < passwordLength; i++) {
+    const randomIndex = Math.floor(Math.random() * charArray.length);
+    passwordArray.push(charArray[randomIndex]);
+  }
+
+  return passwordArray.join("");
+};
+
 // Character sets
 const LOWERCASE_CHARS = generateCharArrays(97, 122); // a-z
 const UPPERCASE_CHARS = generateCharArrays(65, 90); // A-Z
@@ -65,4 +87,6 @@ const SYMBOL_CHARS = generateCharArrays(33, 47).concat(
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+
+  passwordInput.value = generatePassword();
 });
