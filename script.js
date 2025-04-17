@@ -11,26 +11,6 @@ const lowerCaseCheckbox = document.getElementById("lowercase-option");
 const numbersCheckbox = document.getElementById("numbers-option");
 const symbolsCheckbox = document.getElementById("symbols-option");
 
-const generateCharArrays = (begin, end) => {
-  const charArray = [];
-
-  for (let i = begin; i <= end; i++) {
-    charArray.push(String.fromCharCode(i));
-  }
-
-  return charArray;
-};
-
-// Character sets
-const LOWERCASE_CHARS = generateCharArrays(97, 122); // a-z
-const UPPERCASE_CHARS = generateCharArrays(65, 90); // A-Z
-const NUMBER_CHARS = generateCharArrays(48, 57); // 0-9
-const SYMBOL_CHARS = generateCharArrays(33, 47).concat(
-  generateCharArrays(58, 64),
-  generateCharArrays(91, 96),
-  generateCharArrays(123, 126)
-);
-
 const updateSliderFill = () => {
   const min = slider.min ? parseFloat(slider.min) : 0;
   const max = slider.max ? parseFloat(slider.max) : 100;
@@ -48,10 +28,30 @@ const updateSliderFill = () => {
   }
 };
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-});
+const generateCharArrays = (begin, end) => {
+  const charArray = [];
+
+  for (let i = begin; i <= end; i++) {
+    charArray.push(String.fromCharCode(i));
+  }
+
+  return charArray;
+};
 
 slider.addEventListener("input", updateSliderFill);
 
 updateSliderFill();
+
+// Character sets
+const LOWERCASE_CHARS = generateCharArrays(97, 122); // a-z
+const UPPERCASE_CHARS = generateCharArrays(65, 90); // A-Z
+const NUMBER_CHARS = generateCharArrays(48, 57); // 0-9
+const SYMBOL_CHARS = generateCharArrays(33, 47).concat(
+  generateCharArrays(58, 64),
+  generateCharArrays(91, 96),
+  generateCharArrays(123, 126)
+);
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
