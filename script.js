@@ -75,6 +75,20 @@ const generatePassword = () => {
   return passwordArray.join("");
 };
 
+const copyPasswordToClipboard = async () => {
+  if (passwordInput.value) {
+    try {
+      await navigator.clipboard.writeText(passwordInput.value);
+      copyTextSpan.textContent = "COPIED";
+    } catch (err) {
+      console.error("Failed to copy: ", err);
+      alert("Failed to copy password. Please try again.");
+    }
+  } else {
+    alert("Please generate a password first.");
+  }
+};
+
 // Character sets
 const LOWERCASE_CHARS = generateCharArrays(97, 122); // a-z
 const UPPERCASE_CHARS = generateCharArrays(65, 90); // A-Z
@@ -90,3 +104,5 @@ form.addEventListener("submit", (e) => {
 
   passwordInput.value = generatePassword();
 });
+
+copyBtn.addEventListener("click", copyPasswordToClipboard);
