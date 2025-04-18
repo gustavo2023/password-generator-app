@@ -465,84 +465,45 @@ input[type="range"]:active::-moz-range-thumb {
 /* Media Query for smaller screens */
 @media (max-width: 425px) {
   body {
-    padding: var(--spacing-200); /* Reduced padding */
+    padding: var(--spacing-200);
   }
 
   h1 {
-    font: var(--text-preset-3); /* Reduced font size */
-    margin-bottom: var(--spacing-100); /* Reduced margin */
+    font: var(--text-preset-3);
+
   }
 
   .password-container {
-    padding: var(--spacing-100); /* Reduced padding */
-    margin-bottom: var(--spacing-100); /* Reduced margin */
+    padding: var(--spacing-100);
   }
 
   .password,
   .password::placeholder {
-    font: var(--text-preset-3); /* Reduced font size */
+    font: var(--text-preset-3);
   }
 
   .copy-container {
-    gap: var(--spacing-100); /* Reduced gap */
-  }
-
-  .copy-span {
-    font: var(--text-preset-4); /* Kept same, but could be reduced if needed */
+    gap: var(--spacing-100);
   }
 
   form {
-    padding: var(--spacing-100); /* Reduced padding */
-  }
-
-  fieldset {
-    margin-bottom: var(--spacing-300); /* Reduced margin */
-  }
-
-  .length-container {
-    margin-bottom: var(--spacing-100); /* Reduced margin */
-  }
-
-  .length-container label {
-    font: var(--text-preset-4); /* Kept same */
+    padding: var(--spacing-100);
   }
 
   .char-length {
-    font: var(--text-preset-3); /* Reduced font size */
-  }
-
-  .options-container {
-    gap: var(--spacing-100); /* Reduced gap */
-  }
-
-  .input-group {
-    gap: var(--spacing-200); /* Reduced gap */
-  }
-
-  .option-label {
-    font: var(--text-preset-4); /* Kept same */
+    font: var(--text-preset-3)
   }
 
   .strength-container {
-    padding: var(--spacing-100); /* Reduced padding */
-    margin-bottom: var(--spacing-100); /* Reduced margin */
-  }
+    padding: var(--spacing-100);
 
-  .strength-container p {
-    font: var(--text-preset-4); /* Kept same */
-  }
-
-  .password-strength {
-    gap: var(--spacing-100); /* Reduced gap */
   }
 
   .strength-span {
-    font: var(--text-preset-4); /* Reduced font size */
+    font: var(--text-preset-4);
   }
 
   .generate-btn {
-    padding: var(--spacing-100) var(--spacing-400); /* Reduced padding */
-    gap: var(--spacing-100); /* Reduced gap */
-    font: var(--text-preset-4); /* Kept same */
+    padding: var(--spacing-100) var(--spacing-400);
   }
 }
