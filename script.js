@@ -63,43 +63,69 @@ const shuffleArray = (arr) => {
   return arr;
 };
 
-const generatePassword = () => {
-  const passwordLength = parseInt(slider.value, 10);
+// Reads password generation settings from the DOM
+const getPasswordConfig = () => {
+  return {
+    length: parseInt(slider.value, 10),
+    includeUppercase: upperCaseCheckbox.checked,
+    includeLowercase: lowerCaseCheckbox.checked,
+    includeNumbers: numbersCheckbox.checked,
+    includeSymbols: symbolsCheckbox.checked,
+  };
+};
+
+// Generates a password based on the provided configuration
+const generatePassword = (config) => {
+  const {
+    length,
+    includeUppercase,
+    includeLowercase,
+    includeNumbers,
+    includeSymbols,
+  } = config;
+
   let guaranteedChars = [];
   let charPool = [];
 
-  // Check selected options and build initial password parts + full pool
-  if (upperCaseCheckbox.checked) {
+  // Build guaranteed characters and character pool based on config
+  if (includeUppercase) {
     guaranteedChars.push(
       UPPERCASE_CHARS[Math.floor(Math.random() * UPPERCASE_CHARS.length)]
     );
     charPool = charPool.concat(UPPERCASE_CHARS);
   }
-  if (lowerCaseCheckbox.checked) {
+  if (includeLowercase) {
     guaranteedChars.push(
       LOWERCASE_CHARS[Math.floor(Math.random() * LOWERCASE_CHARS.length)]
     );
     charPool = charPool.concat(LOWERCASE_CHARS);
   }
-  if (numbersCheckbox.checked) {
+  if (includeNumbers) {
     guaranteedChars.push(
       NUMBER_CHARS[Math.floor(Math.random() * NUMBER_CHARS.length)]
     );
     charPool = charPool.concat(NUMBER_CHARS);
   }
-  if (symbolsCheckbox.checked) {
+  if (includeSymbols) {
     guaranteedChars.push(
       SYMBOL_CHARS[Math.floor(Math.random() * SYMBOL_CHARS.length)]
     );
     charPool = charPool.concat(SYMBOL_CHARS);
   }
 
-  // If no options selected, return empty or handle error
+  // If no character types are selected, return empty string
   if (charPool.length === 0) {
     return "";
   }
 
-  const remainingLength = passwordLength - guaranteedChars.length;
+  // Handle cases where requested length is smaller than the number of guaranteed characters
+  if (guaranteedChars.length > length) {
+    // Shuffle guaranteed characters and take only the required length
+    guaranteedChars = shuffleArray(guaranteedChars).slice(0, length);
+    return guaranteedChars.join("");
+  }
+
+  const remainingLength = length - guaranteedChars.length;
 
   // Fill the rest of the password length with random chars from the pool
   for (let i = 0; i < remainingLength; i++) {
@@ -193,26 +219,31 @@ const updateStrengthIndicators = (strengthLevel) => {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  // Check if at least one checkbox is selected
+  const config = getPasswordConfig();
+
+  // Check if at least one character type option is selected
   const anyCheckboxChecked =
-    upperCaseCheckbox.checked ||
-    lowerCaseCheckbox.checked ||
-    numbersCheckbox.checked ||
-    symbolsCheckbox.checked;
+    config.includeUppercase ||
+    config.includeLowercase ||
+    config.includeNumbers ||
+    config.includeSymbols;
 
   if (!anyCheckboxChecked) {
     alert("Please select at least one character type option.");
-    // Optionally clear password field and strength indicator
+    // Clear password field and strength indicator
     passwordInput.value = "";
     updateStrengthIndicators(0);
-    copyTextSpan.textContent = ""; // Reset copy text if needed
+    copyTextSpan.textContent = ""; // Reset copy text
     return; // Stop execution
   }
 
-  const password = generatePassword();
-  passwordInput.value = password;
+  const password = generatePassword(config);
+  passwordInput.value = password; // Update the password input field
+
+  // Calculate and display password strength
   const passwordStrength = calculatePasswordStrength(password);
   updateStrengthIndicators(passwordStrength);
+
   copyTextSpan.textContent = ""; // Reset copy text on new generation
 });
 
