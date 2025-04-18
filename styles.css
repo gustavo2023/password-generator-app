@@ -298,6 +298,8 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 input[type="range"]::-moz-range-thumb {
+  margin-bottom: 1.25rem;
+  -moz-appearance: none;
   width: 1.75rem;
   height: 1.75rem;
   background-color: var(--grey-200);
@@ -470,7 +472,7 @@ input[type="range"]:active::-moz-range-thumb {
 
   h1 {
     font: var(--text-preset-3);
-
+    margin-bottom: var(--spacing-400);
   }
 
   .password-container {
@@ -491,12 +493,11 @@ input[type="range"]:active::-moz-range-thumb {
   }
 
   .char-length {
-    font: var(--text-preset-3)
+    font: var(--text-preset-3);
   }
 
   .strength-container {
     padding: var(--spacing-100);
-
   }
 
   .strength-span {
@@ -505,5 +506,76 @@ input[type="range"]:active::-moz-range-thumb {
 
   .generate-btn {
     padding: var(--spacing-100) var(--spacing-400);
+  }
+}
+
+@media (min-width: 86rem) {
+  h1 {
+    font: var(--text-preset-2);
+    margin-bottom: var(--spacing-400);
+  }
+
+  .password-container {
+    padding: var(--spacing-200) var(--spacing-400);
+    margin-bottom: var(--spacing-300);
+  }
+
+  .password {
+    font: var(--text-preset-1);
+  }
+
+  .password::placeholder {
+    font: var(--text-preset-1);
+  }
+
+  .copy-container {
+    gap: var(--spacing-200);
+  }
+
+  .copy-span {
+    font: var(--text-preset-3);
+  }
+
+  form {
+    padding: var(--spacing-300) var(--spacing-400);
+  }
+
+  .length-container {
+    margin-bottom: var(--spacing-200);
+  }
+
+  .length-container label {
+    font: var(--text-preset-3);
+  }
+
+  .char-length {
+    font: var(--text-preset-1);
+  }
+
+  .range-input-container {
+    margin-top: 1.75rem;
+  }
+
+  .option-label {
+    font: var(--text-preset-3);
+  }
+
+  .strength-container {
+    padding: var(--spacing-200) var(--spacing-400);
+    margin-bottom: var(--spacing-400);
+  }
+
+  .strength-container p {
+    font: var(--text-preset-3);
+  }
+
+  .strength-span {
+    font: var(--text-preset-2);
+  }
+
+  .generate-btn {
+    padding: var(--spacing-300) var(--spacing-2200);
+    gap: var(--spacing-300);
+    font: var(--text-preset-3);
   }
 }
