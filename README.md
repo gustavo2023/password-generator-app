@@ -32,7 +32,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [Frontend Mentor Solution](https://www.frontendmentor.io/solutions/password-generator-app-yK6rWvap-C)
 - Live Site URL: [Password Generator](https://gustavo2023.github.io/password-generator-app/)
 
 ## My process
